@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using api.Models;
+using api.Interfaces;
 
 namespace api.Controllers
 {
@@ -13,9 +15,11 @@ namespace api.Controllers
     {
         // GET: api/PA3
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<Driver> Get()
         {
-            return new string[] { "value1", "value2" };
+            //return new string[] { "value1", "value2" };
+            IGetAllDrivers IGetAllDrivers = new GetAllDrivers();
+            return IGetAllDrivers;
         }
 
         // GET: api/PA3/5

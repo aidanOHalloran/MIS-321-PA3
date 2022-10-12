@@ -1,7 +1,8 @@
+using api.Models;
 namespace api.Interfaces
 {
     public interface IGetAllDrivers
     {
-         void GetAllDrivers();
+         List<Driver> GetAllDrivers();
     }
 }

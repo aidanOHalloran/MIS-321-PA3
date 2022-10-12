@@ -1,7 +1,9 @@
+using api.Models;
+
 namespace api
 {
     public interface IGetDriver
     {
-        void GetDriver();
+        Driver GetDriver();
     }
 }
