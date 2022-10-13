@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -10,12 +12,48 @@
   <body>
 
     <div class="container">
-        <h1 id="Title">Drivers</h1>
+       
+        <div class="mx-auto" style="width: 200px;">
+          <h1 class="text-danger" id="Title">Our Drivers</h1>
+        </div>
         <div class="row">
-            <div class="col-md-4"><button class="btn btn-primary">Submit</button></div>
-            <div class="col-md-4"><button class="btn btn-warning">Cancel</button></div>
-            <div class="col-md-4"><button class="btn btn-success">Add</button></div>
-
+          <table class="table table-dark table-bordered border-danger">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Date Hired</th>
+                <th scope="col">Fired</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>5</td>
+                <td>08/16/2022</td>
+                <td>false</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>3</td>
+                <td>09/14/2022</td>
+                <td>false</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Larry</td>
+                <td>2</td>
+                <td>09/29/2022</td>
+                <td>false</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+            <div class="col-md-4"><button id="add-btn" class="btn btn-success">Add Driver</button></div>
         </div>
     </div>
 
