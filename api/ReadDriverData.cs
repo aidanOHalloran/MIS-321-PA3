@@ -3,14 +3,14 @@ using api.Models;
 
 namespace api
 {
-    public class ReadDriverData : IGetDriver, IGetAllDrivers
+    public class ReadDriverData 
     {   
-        public List<Driver> GetAllDrivers(){
+       // public List<Driver> GetAllDrivers(){
 
-        }
+        
 
-        public Driver GetDriver(){
+        //public Driver GetDriver(){
 
-        }
-    }
+    }   
+    
 }

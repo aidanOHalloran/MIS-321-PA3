@@ -18,8 +18,10 @@ namespace api.Controllers
         public List<Driver> Get()
         {
             //return new string[] { "value1", "value2" };
-            IGetAllDrivers IGetAllDrivers = new GetAllDrivers();
-            return IGetAllDrivers;
+            List<Driver> drivers = new List<Driver>();
+            Driver newDriver = new Driver();
+            drivers.Add(newDriver.MakeNewDriver("Aidan", 5, DateTime.Now, false));
+            return drivers;
         }
 
         // GET: api/PA3/5
