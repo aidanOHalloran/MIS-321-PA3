@@ -18,9 +18,25 @@ namespace api.Controllers
         public List<Driver> Get()
         {
             //return new string[] { "value1", "value2" };
+            // var db = new DriversDB();
             List<Driver> drivers = new List<Driver>();
             Driver newDriver = new Driver();
-            drivers.Add(newDriver.MakeNewDriver("Aidan", 5, DateTime.Now, false));
+            string now = DateTime.Now.ToString("MM/dd/yyyy");
+            
+            newDriver = newDriver.MakeNewDriver("Aidan", 4, now, false);
+            drivers.Add(newDriver);
+            
+            newDriver = newDriver.MakeNewDriver("Bailey", 2, now, false);
+            drivers.Add(newDriver);
+            
+            newDriver = newDriver.MakeNewDriver("Jake", 5, now, false);
+            drivers.Add(newDriver);
+
+            newDriver = newDriver.MakeNewDriver("Ryan", 4, now, false);
+            drivers.Add(newDriver);
+
+            // db.Drivers?.AddRange(drivers);
+            //db.SaveChanges();
             return drivers;
         }
 

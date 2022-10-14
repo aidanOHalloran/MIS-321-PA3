@@ -3,6 +3,6 @@ namespace api.Interfaces
 {
     public interface IGetAllDrivers
     {
-         List<Driver> GetAllDrivers();
+         public List<Driver> GetAllDrivers();
     }
 }

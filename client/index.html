@@ -11,51 +11,8 @@
   </head>
   <body>
 
-    <div class="container">
-       
-        <div class="mx-auto" style="width: 200px;">
-          <h1 class="text-danger" id="Title">Our Drivers</h1>
-        </div>
-        <div class="row">
-          <table class="table table-dark table-bordered border-danger">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Date Hired</th>
-                <th scope="col">Fired</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>5</td>
-                <td>08/16/2022</td>
-                <td>false</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>3</td>
-                <td>09/14/2022</td>
-                <td>false</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>2</td>
-                <td>09/29/2022</td>
-                <td>false</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="row">
-            <div class="col-md-4"><button id="add-btn" class="btn btn-success">Add Driver</button></div>
-        </div>
-    </div>
+    <body onload="handleOnLoad()">
+      <div id="app"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="./scripts/index.js"></script>
