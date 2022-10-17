@@ -5,6 +5,8 @@ function handleOnLoad(){
     createApp();
 }
 
+
+
 function createApp(){
     const allDriversUrl = baseURL + 'PA3';
 
@@ -19,6 +21,11 @@ function createApp(){
     //get access to app
     const app = document.getElementById('app');
 
+    let header = createHeader();
+    header.id = 'heading';
+
+    app.appendChild(header);
+
     //create table
     let table = createTable();
 
@@ -31,6 +38,15 @@ function createApp(){
     //add form to the app
     app.appendChild(form);
     })
+}
+
+function createHeader(){
+    let header = document.createElement('HEADER');
+    let h4 = document.createElement('H4');
+    h4.textContent = 'Welcome To Capstone Taxi Service!';
+
+    header.appendChild(h4);
+    return header;
 }
 
 function createTable(){
@@ -81,27 +97,27 @@ function createTable(){
 
         let td = document.createElement('TD');
         td.width = 300;
-        td.appendChild(document.createTextNode(`${driver.ID}`));
+        td.appendChild(document.createTextNode(`${driver.id}`));
         tr.appendChild(td);
 
         let td2 = document.createElement('TD');
         td2.width = 300;
-        td2.appendChild(document.createTextNode(`${driver.Name}`));
+        td2.appendChild(document.createTextNode(`${driver.name}`));
         tr.appendChild(td2);
 
         let td3 = document.createElement('TD');
         td3.width = 300;
-        td3.appendChild(document.createTextNode(`${driver.Rating}`));
+        td3.appendChild(document.createTextNode(`${driver.rating}`));
         tr.appendChild(td3)
 
         let td4 = document.createElement('TD');
         td4.width = 300;
-        td4.appendChild(document.createTextNode(`${driver.DateHired}`));
+        td4.appendChild(document.createTextNode(`${driver.dateHired}`));
         tr.appendChild(td4)
 
         let td5 = document.createElement('TD');
         td5.width = 300;
-        td5.appendChild(document.createTextNode(`${driver.Fired}`));
+        td5.appendChild(document.createTextNode(`${driver.deleted}`));
         tr.appendChild(td5)
     })
 
@@ -119,6 +135,7 @@ function CreateForm(){
 
     let submitButton = document.createElement('button');
     submitButton.textContent = 'add driver';
+    submitButton.id = 'addDriver';
     form.appendChild(submitButton);
 
     form.addEventListener('submit', function(e){ //e is a parameter
@@ -126,13 +143,13 @@ function CreateForm(){
         console.log('submitted');
 
         //now need to add the todos array
-        let currentDate = new Date().toJSON().slice(0, 10); // gets first 10 characters
+        let currentDate = new Date();
         let driver = {
-            ID: 5,
-            Name: document.getElementById('newDriverName').value,
-            Rating: 5,
-            DatedHired: currentDate,
-            Fired: false
+            id: 5,
+            name: document.getElementById('newDriverName').value,
+            rating: 5,
+            datedHired: '10/15/2022',
+            deleted: false
         }
         addRow(driver);
         createDriver(driver);
@@ -149,27 +166,27 @@ function addRow(driver) {
 
         let td = document.createElement('TD');
         td.width = 300;
-        td.appendChild(document.createTextNode(`${driver.ID}`));
+        td.appendChild(document.createTextNode(`${driver.id}`));
         tr.appendChild(td);
 
         let td2 = document.createElement('TD');
         td2.width = 500;
-        td2.appendChild(document.createTextNode(`${driver.Name}`));
+        td2.appendChild(document.createTextNode(`${driver.name}`));
         tr.appendChild(td2);
 
         let td3 = document.createElement('TD');
         td3.width = 300;
-        td3.appendChild(document.createTextNode(`${driver.Rating}`));
+        td3.appendChild(document.createTextNode(`${driver.rating}`));
         tr.appendChild(td3)
 
         let td4 = document.createElement('TD');
         td4.width = 300;
-        td4.appendChild(document.createTextNode(`${driver.DateHired}`));
+        td4.appendChild(document.createTextNode(`${driver.dateHired}`));
         tr.appendChild(td4)
 
         let td5 = document.createElement('TD');
         td5.width = 300;
-        td5.appendChild(document.createTextNode(`${driver.Fired}`));
+        td5.appendChild(document.createTextNode(`${driver.deleted}`));
         tr.appendChild(td5)
 
         drivers.push(driver);
@@ -182,11 +199,11 @@ function createDriver(driver){
     console.log(driver);
 
     const sendDriver = {
-        "ID": driver.ID,
-        "Name": driver.Name,
-        "Rating": driver.Rating,
-        "DateHired": driver.DateHired,
-        "Fired": driver.Fired
+        "ID": driver.id,
+        "Name": driver.name,
+        "Rating": driver.rating,
+        "DateHired": driver.dateHired,
+        "Deleted": driver.deleted
     }
 
     fetch(postUrl, {

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using api.Models;
 using api.Interfaces;
+using Microsoft.AspNetCore.Cors;
 
 namespace api.Controllers
 {
@@ -13,13 +14,16 @@ namespace api.Controllers
     [ApiController]
     public class PA3Controller : ControllerBase
     {
+        public List<Driver> drivers = new List<Driver>();
+
         // GET: api/PA3
+        //[EnableCors("OpenPolicy")]
         [HttpGet]
         public List<Driver> Get()
         {
             //return new string[] { "value1", "value2" };
             // var db = new DriversDB();
-            List<Driver> drivers = new List<Driver>();
+            
             Driver newDriver = new Driver();
             string now = DateTime.Now.ToString("MM/dd/yyyy");
             
@@ -41,6 +45,7 @@ namespace api.Controllers
         }
 
         // GET: api/PA3/5
+        [EnableCors("OpenPolicy")]
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
@@ -48,18 +53,23 @@ namespace api.Controllers
         }
 
         // POST: api/PA3
+        //[EnableCors("OpenPolicy")]        
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Driver newDriver)
         {
+            drivers.Add(newDriver);
+            System.Console.WriteLine("Hit the post");
         }
 
         // PUT: api/PA3/5
+       // [EnableCors("OpenPolicy")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE: api/PA3/5
+        //[EnableCors("OpenPolicy")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

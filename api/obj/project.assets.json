@@ -10068,11 +10068,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/api.csproj",
+      "projectUniqueName": "/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/api.csproj",
       "projectName": "api",
-      "projectPath": "/Users/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/api.csproj",
+      "projectPath": "/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/api.csproj",
       "packagesPath": "/Users/aidanohalloran/.nuget/packages/",
-      "outputPath": "/Users/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/obj/",
+      "outputPath": "/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/aidanohalloran/.nuget/NuGet/NuGet.Config"
@@ -10141,7 +10141,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
       }
     }
   }
