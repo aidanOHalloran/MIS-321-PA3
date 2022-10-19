@@ -3,8 +3,10 @@
     color: crimson;
 }
 
+
 table, tr, th, td{
     border: 1px solid;
+    position: relative;
 }
 
 table {
@@ -25,12 +27,20 @@ th {
     color: white;
   }
 #newDriverName{
-    transform: translateX(180px);
-    
+    transform: translateX(170px);
+    width: 150px;
+    position: fixed;
 }
+
 #addDriver{
     transform: translateX(600px);
 }
+
+#newDriverRating{
+    transform: translateX(250px);
+    width: 150px;
+    position: fixed;
+} 
 
 
   

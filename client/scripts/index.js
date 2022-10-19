@@ -1,19 +1,3 @@
-// const mysql = require('mysql');
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: 'panthers57',
-// });
-
-// connection.connect((error) => {
-//   if(error){
-//     console.log('Error connecting to the MySQL Database');
-//     return;
-//   }
-//   console.log('Connection established sucessfully');
-// });
-// connection.end((error) => {
-// });
 
 let baseURL = 'https://localhost:7077/api/';
 
@@ -142,18 +126,26 @@ function createTable(){
 
 function CreateForm(){
     let form = document.createElement('form');
-    let textInput = document.createElement('input');
-    textInput.type = 'text';
-    textInput.autocomplete = "off";
-    textInput.placeholder = "Enter a Driver";
-    textInput.id = 'newDriverName';
-    form.appendChild(textInput);
+    let textInputDriverName = document.createElement('input');
+    textInputDriverName.type = 'text';
+    textInputDriverName.autocomplete = "off";
+    textInputDriverName.placeholder = "Enter a Driver";
+    textInputDriverName.id = 'newDriverName';
+    form.appendChild(textInputDriverName);
 
+    
     let submitButton = document.createElement('button');
     submitButton.textContent = 'add driver';
     submitButton.id = 'addDriver';
     form.appendChild(submitButton);
-
+    
+    let textInputDriverRating = document.createElement('input');
+    textInputDriverRating.type = 'text';
+    textInputDriverRating.autocomplete = "off";
+    textInputDriverRating.placeholder = "Enter a Rating";
+    textInputDriverRating.id = 'newDriverRating';
+    form.appendChild(textInputDriverRating);
+    
     form.addEventListener('submit', function(e){ //e is a parameter
         e.preventDefault(); // prevents reload
         console.log('submitted');
@@ -162,9 +154,8 @@ function CreateForm(){
         let currentDate = new Date().toJSON().slice(0, 10);
         currentDate.toString();
         let driver = {
-            id: 5,
             name: document.getElementById('newDriverName').value,
-            rating: 5,
+            rating: document.getElementById('newDriverRating').value,
             datedHired: currentDate,
             deleted: false
         }
@@ -213,9 +204,10 @@ function addRow(driver) {
 function createDriver(driver){
     const postURL = baseURL + 'PA3';
     console.log(driver);
+    console.log(driver.DateHired);
 
     const sendDriver = {
-        "ID": driver.id,
+        //"ID": driver.id,
         "Name": driver.name,
         "Rating": driver.rating,
         "DateHired": driver.dateHired,
