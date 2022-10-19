@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using api.Models;
 using api.Interfaces;
+using api.Behaviors;
 using Microsoft.AspNetCore.Cors;
 
 namespace api.Controllers
@@ -17,59 +18,36 @@ namespace api.Controllers
         public List<Driver> drivers = new List<Driver>();
 
         // GET: api/PA3
-        //[EnableCors("OpenPolicy")]
         [HttpGet]
         public List<Driver> Get()
         {
-            //return new string[] { "value1", "value2" };
-            // var db = new DriversDB();
-            
-            Driver newDriver = new Driver();
-            string now = DateTime.Now.ToString("MM/dd/yyyy");
-            
-            newDriver = newDriver.MakeNewDriver("Aidan", 4, now, false);
-            drivers.Add(newDriver);
-            
-            newDriver = newDriver.MakeNewDriver("Bailey", 2, now, false);
-            drivers.Add(newDriver);
-            
-            newDriver = newDriver.MakeNewDriver("Jake", 5, now, false);
-            drivers.Add(newDriver);
-
-            newDriver = newDriver.MakeNewDriver("Ryan", 4, now, false);
-            drivers.Add(newDriver);
-
-            // db.Drivers?.AddRange(drivers);
-            //db.SaveChanges();
-            return drivers;
+            IGetAllDrivers readObject = new ReadBehavior();
+            return readObject.GetAllDrivers();
         }
 
         // GET: api/PA3/5
-        [EnableCors("OpenPolicy")]
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public Driver Get(int id)
         {
-            return "value";
+            IGetDriver readObject = new ReadBehavior(); 
+            return readObject.GetDriver(id);
         }
 
         // POST: api/PA3
-        //[EnableCors("OpenPolicy")]        
         [HttpPost]
         public void Post([FromBody] Driver newDriver)
         {
-            drivers.Add(newDriver);
-            System.Console.WriteLine("Hit the post");
+            IInsertDriver insertObject = new CreateBehavior();
+            insertObject.InsertDriver(newDriver);
         }
 
         // PUT: api/PA3/5
-       // [EnableCors("OpenPolicy")]
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
         // DELETE: api/PA3/5
-        //[EnableCors("OpenPolicy")]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

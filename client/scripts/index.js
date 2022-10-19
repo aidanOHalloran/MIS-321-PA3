@@ -1,5 +1,20 @@
+// const mysql = require('mysql');
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: 'panthers57',
+// });
 
-let drivers = JSON.parse(localStorage.getItem('savedDrivers'));
+// connection.connect((error) => {
+//   if(error){
+//     console.log('Error connecting to the MySQL Database');
+//     return;
+//   }
+//   console.log('Connection established sucessfully');
+// });
+// connection.end((error) => {
+// });
+
 let baseURL = 'https://localhost:7077/api/';
 
 function handleOnLoad(){
@@ -143,13 +158,14 @@ function CreateForm(){
         e.preventDefault(); // prevents reload
         console.log('submitted');
 
-        //now need to add the todos array
-        let currentDate = new Date();
+        //now need to add the drivers array
+        let currentDate = new Date().toJSON().slice(0, 10);
+        currentDate.toString();
         let driver = {
             id: 5,
             name: document.getElementById('newDriverName').value,
             rating: 5,
-            datedHired: '10/15/2022',
+            datedHired: currentDate,
             deleted: false
         }
         addRow(driver);
@@ -192,11 +208,10 @@ function addRow(driver) {
 
         drivers.push(driver);
 
-        localStorage.setItem('savedDrivers', JSON.stringify(driver));
 }
 
 function createDriver(driver){
-    const postUrl = baseURL + 'PA3';
+    const postURL = baseURL + 'PA3';
     console.log(driver);
 
     const sendDriver = {
@@ -207,7 +222,7 @@ function createDriver(driver){
         "Deleted": driver.deleted
     }
 
-    fetch(postUrl, {
+    fetch(postURL, {
         method: 'POST',
         headers: {
             "Accept": 'application/json',

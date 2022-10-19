@@ -4,6 +4,6 @@ namespace api
 {
     public interface IGetDriver
     {
-        Driver GetDriver();
+        Driver GetDriver(int ID);
     }
 }

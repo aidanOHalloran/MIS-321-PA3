@@ -526,3 +526,11 @@
 /Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/obj/Debug/net6.0/api.pdb
 /Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/obj/Debug/net6.0/api.genruntimeconfig.cache
 /Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/obj/Debug/net6.0/ref/api.dll
+/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/bin/Debug/net6.0/MySqlConnector.dll
+/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/bin/Debug/net6.0/Google.Protobuf.dll
+/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/bin/Debug/net6.0/K4os.Compression.LZ4.dll
+/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/bin/Debug/net6.0/K4os.Compression.LZ4.Streams.dll
+/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/bin/Debug/net6.0/K4os.Hash.xxHash.dll
+/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/bin/Debug/net6.0/MySql.Data.dll
+/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/bin/Debug/net6.0/ZstdNet.dll
+/Users/aidanohalloran/Desktop/aidanohalloran/Desktop/juniorYearBama/bamaFall22/mis321/PA3/MIS-321-PA3/api/bin/Debug/net6.0/BouncyCastle.Crypto.dll

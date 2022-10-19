@@ -24,6 +24,13 @@ th {
     background-color: crimson;
     color: white;
   }
+#newDriverName{
+    transform: translateX(180px);
+    
+}
+#addDriver{
+    transform: translateX(600px);
+}
 
 
   
