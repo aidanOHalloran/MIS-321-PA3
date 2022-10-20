@@ -71,4 +71,16 @@ th {
     color: white;
     border-radius: 8px;
 }
-  
+#fireDriver{
+    text-align: center;
+}
+#fireDriverBtn{
+    transform: translateX(-15px);
+    background-color: crimson;
+    color: white;
+    border-radius: 8px;
+}
+#textInputDriverID2{
+    transform: translateX(-25px);
+    width: 150px;
+}

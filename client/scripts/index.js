@@ -37,17 +37,18 @@ function createApp(){
 
     
     let AddDriver = createAddDriver();
-    
     app.appendChild(AddDriver);
-
-    //add form to the app
-    //app.appendChild(form);
     AddDriver.appendChild(form);
 
     let updateDriverRating = createUpdateDriverRating();
     app.appendChild(updateDriverRating);
     let addUpdateRatingForm = createAddUpdateRatingForm();
     updateDriverRating.appendChild(addUpdateRatingForm);
+
+    let fireDriver = createFireDriver();
+    app.appendChild(fireDriver);
+    let fireDriverForm = createFireDriverForm();
+    fireDriver.appendChild(fireDriverForm);
 })
 }
 
@@ -58,6 +59,15 @@ function createUpdateDriverRating(){
 
     return updateRating;
 }
+
+function createFireDriver(){
+    let fireDriver = document.createElement('div');
+    fireDriver.id = 'fireDriver';
+    fireDriver.innerHTML = '<h1>Fire Driver:</h1>'
+
+    return fireDriver;
+}
+
 
 function createAddDriver(){
     let addDriver = document.createElement('div');
@@ -70,10 +80,10 @@ function createAddDriver(){
 
 function createHeader(){
     let header = document.createElement('HEADER');
-    let h4 = document.createElement('H4');
-    h4.textContent = 'Welcome To Capstone Taxi Service!';
+    let h3= document.createElement('H3');
+    h3.textContent = 'Welcome To Capstone Taxi Service!';
 
-    header.appendChild(h4);
+    header.appendChild(h3);
     return header;
 }
 
@@ -108,10 +118,10 @@ function createTable(){
     tr.appendChild(th3);
 
     //header 4
-    let th4 = document.createElement('TH');
-    th4.width = 300
-    th4.appendChild(document.createTextNode('Date Hired'));
-    tr.appendChild(th4);
+    // let th4 = document.createElement('TH');
+    // th4.width = 300
+    // th4.appendChild(document.createTextNode('Date Hired'));
+    // tr.appendChild(th4);
 
     //header 5
     let th5 = document.createElement('TH');
@@ -138,10 +148,10 @@ function createTable(){
         td3.appendChild(document.createTextNode(`${driver.rating}`));
         tr.appendChild(td3)
 
-        let td4 = document.createElement('TD');
-        td4.width = 300;
-        td4.appendChild(document.createTextNode(`${driver.dateHired}`));
-        tr.appendChild(td4)
+        // let td4 = document.createElement('TD');
+        // td4.width = 300;
+        // td4.appendChild(document.createTextNode(`${driver.dateHired}`));
+        // tr.appendChild(td4)
 
         let td5 = document.createElement('TD');
         td5.width = 300;
@@ -151,6 +161,40 @@ function createTable(){
 
     return table;
 }
+
+function createFireDriverForm(){
+    let fireDriverForm = document.createElement('FORM');
+    let textInputDriverID2 = document.createElement('input');
+    textInputDriverID2.type = 'text';
+    textInputDriverID2.id = 'textInputDriverID2';
+    textInputDriverID2.autocomplete = "off";
+    textInputDriverID2.placeholder = "Enter Driver ID";
+    fireDriverForm.appendChild(textInputDriverID2);
+
+    let submitButton = document.createElement('button');
+    submitButton.textContent = 'FIRE';
+    submitButton.id = 'fireDriverBtn';
+    fireDriverForm.appendChild(submitButton);
+
+    fireDriverForm.addEventListener('submit', function(e){ //e is a parameter
+        e.preventDefault(); // prevents reload
+        console.log('Fired');
+
+        let driverToBeFired = {
+            id: document.getElementById('textInputDriverID2').value,
+            name: '',
+            rating: document.getElementById('updateDriverRating').value,
+            datedHired: '',
+            deleted: false
+        }
+        
+        fireDriver(driverToBeUpdated)
+        document.getElementById('newDriverName').value = '';
+    })
+
+    return fireDriverForm;
+}
+
 
 function createAddUpdateRatingForm(){
     let form = document.createElement('FORM');
@@ -220,8 +264,8 @@ function CreateNewDriverForm(){
         console.log('submitted');
 
         //now need to add the drivers array
-        let currentDate = new Date().toJSON().slice(0, 10);
-        currentDate.toString();
+        let currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+       // currentDate.toString();
         let driver = {
             name: document.getElementById('newDriverName').value,
             rating: document.getElementById('newDriverRating').value,
@@ -256,10 +300,10 @@ function addRow(driver) {
         td3.appendChild(document.createTextNode(`${driver.rating}`));
         tr.appendChild(td3)
 
-        let td4 = document.createElement('TD');
-        td4.width = 300;
-        td4.appendChild(document.createTextNode(`${driver.dateHired}`));
-        tr.appendChild(td4)
+        // let td4 = document.createElement('TD');
+        // td4.width = 300;
+        // td4.appendChild(document.createTextNode(`${driver.dateHired}`));
+        // tr.appendChild(td4)
 
         let td5 = document.createElement('TD');
         td5.width = 300;
@@ -267,7 +311,7 @@ function addRow(driver) {
         tr.appendChild(td5)
 
         drivers.push(driver);
-
+        location.reload();
 }
 
 function createDriver(driver){
