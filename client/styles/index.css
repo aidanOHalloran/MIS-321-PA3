@@ -1,3 +1,8 @@
+*{
+    margin: 10;
+    padding: 10;
+}
+
 #heading{
     text-align: center;
     color: crimson;
@@ -27,20 +32,39 @@ th {
     color: white;
   }
 #newDriverName{
-    transform: translateX(170px);
+    transform: translateX(100px);
     width: 150px;
-    position: fixed;
+    position: relative;
 }
 
 #addDriver{
-    transform: translateX(600px);
+    transform: translateX(407px);
+    position: relative;
 }
 
 #newDriverRating{
-    transform: translateX(250px);
+    transform: translateX(205px);
     width: 150px;
-    position: fixed;
+    position: relative;
 } 
-
-
+#menu{
+    text-align: center;
+}
+#addDriver{
+    background-color: crimson;
+    color: white;
+}
+#update-rating{
+    text-align: center;
+}
+#textInputDriverID{
+    transform: translateX(-100px);
+}
+#updateDriverRating{
+    transform: translateX(-90px);
+    width: 150px;
+}
+#updateRatingBtn{
+    transform: translateX(150px);
+}
   

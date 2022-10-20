@@ -43,8 +43,12 @@ namespace api.Controllers
 
         // PUT: api/PA3/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Driver driver)
         {
+            IFireDriver updateObject = new UpdateBehavior();
+            updateObject.FireDriver(driver);
+            System.Console.WriteLine($"driver rating: {driver.Rating} driver id: {driver.ID}");
+            System.Console.WriteLine("hit the put");
         }
 
         // DELETE: api/PA3/5

@@ -33,12 +33,39 @@ function createApp(){
     app.appendChild(table);
 
     //create the form
-    let form = CreateForm();
+    let form = CreateNewDriverForm();
+
+    
+    let AddDriver = createAddDriver();
+    
+    app.appendChild(AddDriver);
 
     //add form to the app
     app.appendChild(form);
-    })
+    
+    let updateDriverRating = createUpdateDriverRating();
+    app.appendChild(updateDriverRating);
+    let addUpdateRatingForm = createAddUpdateRatingForm();
+    updateDriverRating.appendChild(addUpdateRatingForm);
+})
 }
+
+function createUpdateDriverRating(){
+    let updateRating = document.createElement('div');
+    updateRating.id = 'update-rating';
+    updateRating.innerHTML = '<h1>Update Driver Rating:</h1>'
+
+    return updateRating;
+}
+
+function createAddDriver(){
+    let addDriver = document.createElement('div');
+    addDriver.id ='menu';
+    addDriver.innerHTML = '<h1>Hire A Driver: </h1>'
+    
+    return addDriver;
+}
+
 
 function createHeader(){
     let header = document.createElement('HEADER');
@@ -124,7 +151,46 @@ function createTable(){
     return table;
 }
 
-function CreateForm(){
+function createAddUpdateRatingForm(){
+    let form = document.createElement('FORM');
+    let textInputDriverID = document.createElement('input');
+    textInputDriverID.type = 'text';
+    textInputDriverID.id = 'textInputDriverID';
+    textInputDriverID.autocomplete = "off";
+    textInputDriverID.placeholder = "Enter Driver ID";
+    form.appendChild(textInputDriverID);
+
+    let textInputDriverRating = document.createElement('input');
+    textInputDriverRating.type = 'text';
+    textInputDriverRating.autocomplete = "off";
+    textInputDriverRating.placeholder = "Enter a Rating";
+    textInputDriverRating.id = 'updateDriverRating';
+    form.appendChild(textInputDriverRating);
+
+    let submitButton = document.createElement('button');
+    submitButton.textContent = 'UPDATE';
+    submitButton.id = 'updateRatingBtn';
+    form.appendChild(submitButton);
+
+    form.addEventListener('submit', function(e){ //e is a parameter
+        e.preventDefault(); // prevents reload
+        console.log('Updated');
+
+        let driverToBeUpdated = {
+            id: document.getElementById('textInputDriverID').value,
+            name: '',
+            rating: document.getElementById('updateDriverRating').value,
+            datedHired: '',
+            deleted: false
+        }
+        
+        fireDriver(driverToBeUpdated)
+        document.getElementById('newDriverName').value = '';
+    })
+    return form;
+}
+
+function CreateNewDriverForm(){
     let form = document.createElement('form');
     let textInputDriverName = document.createElement('input');
     textInputDriverName.type = 'text';
@@ -134,8 +200,9 @@ function CreateForm(){
     form.appendChild(textInputDriverName);
 
     
+    
     let submitButton = document.createElement('button');
-    submitButton.textContent = 'add driver';
+    submitButton.textContent = 'ADD';
     submitButton.id = 'addDriver';
     form.appendChild(submitButton);
     
@@ -146,6 +213,7 @@ function CreateForm(){
     textInputDriverRating.id = 'newDriverRating';
     form.appendChild(textInputDriverRating);
     
+
     form.addEventListener('submit', function(e){ //e is a parameter
         e.preventDefault(); // prevents reload
         console.log('submitted');
@@ -227,4 +295,32 @@ function createDriver(driver){
         }
         console.log('response from the save', response);
     })
+}
+
+function fireDriver(driverToBeUpdated){
+    const putURL = baseURL + 'PA3/' + document.getElementById('textInputDriverID').value;
+    console.log(driverToBeUpdated);
+    //driverID = document.getElementById('textInputDriverID').value;
+    const sendDriverToBeUpdated = {
+        "ID": driverToBeUpdated.id,
+        "Name": driverToBeUpdated.name,
+        "Rating": driverToBeUpdated.rating,
+        "DateHired": driverToBeUpdated.dateHired,
+        "Deleted": driverToBeUpdated.deleted
+    }
+    
+    fetch(putURL, {
+        method: 'PUT',
+        headers: {
+        "Accept": 'application/json',
+        "Content-Type": 'application/json'
+        },
+        body: JSON.stringify(sendDriverToBeUpdated)
+    }).then((response)=> {
+        if(response.status === 200){
+            window.alert(`Rating has been updated successfully`);
+        }
+        console.log('response from the save', response);
+    })
+
 }
