@@ -41,8 +41,9 @@ function createApp(){
     app.appendChild(AddDriver);
 
     //add form to the app
-    app.appendChild(form);
-    
+    //app.appendChild(form);
+    AddDriver.appendChild(form);
+
     let updateDriverRating = createUpdateDriverRating();
     app.appendChild(updateDriverRating);
     let addUpdateRatingForm = createAddUpdateRatingForm();
@@ -203,7 +204,7 @@ function CreateNewDriverForm(){
     
     let submitButton = document.createElement('button');
     submitButton.textContent = 'ADD';
-    submitButton.id = 'addDriver';
+    submitButton.id = 'addDriverBtn';
     form.appendChild(submitButton);
     
     let textInputDriverRating = document.createElement('input');

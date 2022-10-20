@@ -32,39 +32,43 @@ th {
     color: white;
   }
 #newDriverName{
-    transform: translateX(100px);
+    transform: translateX(0px);
     width: 150px;
-    position: relative;
-}
-
-#addDriver{
-    transform: translateX(407px);
     position: relative;
 }
 
 #newDriverRating{
-    transform: translateX(205px);
+    transform: translateX(-40px);
     width: 150px;
     position: relative;
-} 
-#menu{
-    text-align: center;
 }
-#addDriver{
+
+#addDriverBtn{
+    transform: translateX(165px);
+    position: relative;
+    border-radius: 8px;
     background-color: crimson;
     color: white;
 }
+#menu{
+    text-align: center;
+}
+
 #update-rating{
     text-align: center;
 }
 #textInputDriverID{
-    transform: translateX(-100px);
+    width: 150px;
+    transform: translateX(0px);
 }
 #updateDriverRating{
-    transform: translateX(-90px);
+    transform: translateX(10px);
     width: 150px;
 }
 #updateRatingBtn{
-    transform: translateX(150px);
+    transform: translateX(15px);
+    background-color: crimson;
+    color: white;
+    border-radius: 8px;
 }
   
