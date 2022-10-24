@@ -4,9 +4,9 @@ using MySql.Data.MySqlClient;
 
 namespace api.Behaviors
 {
-    public class UpdateBehavior : IFireDriver
+    public class UpdateBehavior : IUpdateDriver
     {
-        public void FireDriver(Driver driver){
+        public void UpdateDriver(Driver driver){
 
             string cs = @"server=localhost;user=root;database=PA3;port=3306;password=panthers57";
             using var connection = new MySqlConnection(cs);

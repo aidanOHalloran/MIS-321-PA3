@@ -11,10 +11,10 @@ function createApp(){
     const allDriversUrl = baseURL + 'PA3';
 
     fetch(allDriversUrl).then(function(response){
-        console.log(response);
+       // console.log(response);
         return response.json();
     }).then(function(json){
-        console.log(json);
+       // console.log(json);
         drivers = json;
 
 
@@ -49,6 +49,7 @@ function createApp(){
     app.appendChild(fireDriver);
     let fireDriverForm = createFireDriverForm();
     fireDriver.appendChild(fireDriverForm);
+    
 })
 }
 
@@ -178,18 +179,19 @@ function createFireDriverForm(){
 
     fireDriverForm.addEventListener('submit', function(e){ //e is a parameter
         e.preventDefault(); // prevents reload
-        console.log('Fired');
+        //console.log('Fired');
 
         let driverToBeFired = {
             id: document.getElementById('textInputDriverID2').value,
-            name: '',
-            rating: document.getElementById('updateDriverRating').value,
-            datedHired: '',
-            deleted: false
+            name: 'FireDriver',
+            rating: 4,
+            datedHired: ' ',
+            deleted: true
         }
         
-        fireDriver(driverToBeUpdated)
+        fireDriver(driverToBeFired);
         document.getElementById('newDriverName').value = '';
+        location.reload();
     })
 
     return fireDriverForm;
@@ -208,7 +210,7 @@ function createAddUpdateRatingForm(){
     let textInputDriverRating = document.createElement('input');
     textInputDriverRating.type = 'text';
     textInputDriverRating.autocomplete = "off";
-    textInputDriverRating.placeholder = "Enter a Rating";
+    textInputDriverRating.placeholder = "Updated Rating";
     textInputDriverRating.id = 'updateDriverRating';
     form.appendChild(textInputDriverRating);
 
@@ -223,13 +225,14 @@ function createAddUpdateRatingForm(){
 
         let driverToBeUpdated = {
             id: document.getElementById('textInputDriverID').value,
-            name: '',
+            name: 'UpdateDriver',
             rating: document.getElementById('updateDriverRating').value,
             datedHired: '',
             deleted: false
         }
         
-        fireDriver(driverToBeUpdated)
+        updateDriver(driverToBeUpdated);
+        location.reload();
         document.getElementById('newDriverName').value = '';
     })
     return form;
@@ -240,12 +243,10 @@ function CreateNewDriverForm(){
     let textInputDriverName = document.createElement('input');
     textInputDriverName.type = 'text';
     textInputDriverName.autocomplete = "off";
-    textInputDriverName.placeholder = "Enter a Driver";
+    textInputDriverName.placeholder = "Enter Driver Name";
     textInputDriverName.id = 'newDriverName';
     form.appendChild(textInputDriverName);
 
-    
-    
     let submitButton = document.createElement('button');
     submitButton.textContent = 'ADD';
     submitButton.id = 'addDriverBtn';
@@ -254,7 +255,7 @@ function CreateNewDriverForm(){
     let textInputDriverRating = document.createElement('input');
     textInputDriverRating.type = 'text';
     textInputDriverRating.autocomplete = "off";
-    textInputDriverRating.placeholder = "Enter a Rating";
+    textInputDriverRating.placeholder = "Enter Driver Rating";
     textInputDriverRating.id = 'newDriverRating';
     form.appendChild(textInputDriverRating);
     
@@ -342,7 +343,7 @@ function createDriver(driver){
     })
 }
 
-function fireDriver(driverToBeUpdated){
+function updateDriver(driverToBeUpdated){
     const putURL = baseURL + 'PA3/' + document.getElementById('textInputDriverID').value;
     console.log(driverToBeUpdated);
     //driverID = document.getElementById('textInputDriverID').value;
@@ -368,4 +369,33 @@ function fireDriver(driverToBeUpdated){
         console.log('response from the save', response);
     })
 
+}
+
+function fireDriver(driverToBeFired){
+    const deleteURL = baseURL + 'PA3/' + document.getElementById('textInputDriverID2').value;
+    console.log(deleteURL);
+   // let currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+
+    const sendDriverToBeFired = {
+        "ID": driverToBeFired.id,
+        "Name": driverToBeFired.name,
+        "Rating": driverToBeFired.rating,
+       // "DateHired": '',
+        "Deleted": driverToBeFired.deleted
+    }
+    console.log(sendDriverToBeFired);
+
+    fetch(deleteURL, {
+        method: 'PUT',
+        headers: {
+        "Accept": 'application/json',
+        "Content-Type": 'application/json'
+         },
+        body: JSON.stringify(sendDriverToBeFired)
+    }).then((response)=> {
+        if(response.status === 200){
+            window.alert(`Driver Has Been Successfully fired`);
+        }
+        console.log('response from the save', response);
+   })
 }

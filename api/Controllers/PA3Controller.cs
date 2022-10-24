@@ -45,16 +45,25 @@ namespace api.Controllers
         [HttpPut("{id}")]
         public void Put([FromBody] Driver driver)
         {
-            IFireDriver updateObject = new UpdateBehavior();
-            updateObject.FireDriver(driver);
-            System.Console.WriteLine($"driver rating: {driver.Rating} driver id: {driver.ID}");
-            System.Console.WriteLine("hit the put");
+            if(driver.Name == "UpdateDriver"){
+                IUpdateDriver updateObject = new UpdateBehavior();
+                updateObject.UpdateDriver(driver);
+                System.Console.WriteLine("hit put (update rating)");
+            }else if(driver.Name == "FireDriver"){
+                IFireDriver fireObject = new DeleteBehavior();
+                fireObject.FireDriver(driver);
+                System.Console.WriteLine("hit put (fire driver)");
+
+            } 
+            System.Console.WriteLine("hit put (general)");
         }
+
 
         // DELETE: api/PA3/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(Driver driver)
         {
+            
         }
     }
 }
