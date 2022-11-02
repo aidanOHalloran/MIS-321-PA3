@@ -1,4 +1,3 @@
-
 let baseURL = 'https://localhost:7077/api/';
 
 function handleOnLoad(){
@@ -81,7 +80,7 @@ function createAddDriver(){
 
 function createHeader(){
     let header = document.createElement('HEADER');
-    let h3= document.createElement('H3');
+    let h3= document.createElement('H1');
     h3.textContent = 'Welcome To Capstone Taxi Service!';
 
     header.appendChild(h3);
@@ -221,7 +220,6 @@ function createAddUpdateRatingForm(){
 
     form.addEventListener('submit', function(e){ //e is a parameter
         e.preventDefault(); // prevents reload
-        console.log('Updated');
 
         let driverToBeUpdated = {
             id: document.getElementById('textInputDriverID').value,
@@ -319,12 +317,13 @@ function createDriver(driver){
     const postURL = baseURL + 'PA3';
     console.log(driver);
     console.log(driver.DateHired);
+    let currDate = new Date().toJSON().slice(0,10);
 
     const sendDriver = {
         //"ID": driver.id,
         "Name": driver.name,
         "Rating": driver.rating,
-        "DateHired": driver.dateHired,
+        "DateHired": currDate,
         "Deleted": driver.deleted
     }
 
@@ -347,14 +346,15 @@ function updateDriver(driverToBeUpdated){
     const putURL = baseURL + 'PA3/' + document.getElementById('textInputDriverID').value;
     console.log(driverToBeUpdated);
     //driverID = document.getElementById('textInputDriverID').value;
+    let currDate = new Date().toJSON().slice(0,10);
     const sendDriverToBeUpdated = {
         "ID": driverToBeUpdated.id,
         "Name": driverToBeUpdated.name,
         "Rating": driverToBeUpdated.rating,
-        "DateHired": driverToBeUpdated.dateHired,
+        "DateHired": currDate,
         "Deleted": driverToBeUpdated.deleted
     }
-    
+    console.log(sendDriverToBeUpdated);
     fetch(putURL, {
         method: 'PUT',
         headers: {
@@ -375,12 +375,13 @@ function fireDriver(driverToBeFired){
     const deleteURL = baseURL + 'PA3/' + document.getElementById('textInputDriverID2').value;
     console.log(deleteURL);
    // let currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
+   let currDate = new Date().toJSON().slice(0,10);
 
     const sendDriverToBeFired = {
         "ID": driverToBeFired.id,
         "Name": driverToBeFired.name,
         "Rating": driverToBeFired.rating,
-       // "DateHired": '',
+        "DateHired": currDate,
         "Deleted": driverToBeFired.deleted
     }
     console.log(sendDriverToBeFired);

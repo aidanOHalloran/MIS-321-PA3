@@ -54,7 +54,7 @@ namespace api.Controllers
                 fireObject.FireDriver(driver);
                 System.Console.WriteLine("hit put (fire driver)");
 
-            } 
+            }
             System.Console.WriteLine("hit put (general)");
         }
 
